@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        /* CSS styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            background: #111;
+        }
+        
+        .btn {
+            position: relative;
+            padding: 10px 30px;
+            border: 2px solid #41f321;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: #41f321;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.5s;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            color: #111;
+        }
+        
+        .btn span {
+            position: absolute;
+            display: block;
+            width: 0px;
+            height: 0px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: #41f321;
+            transition: width 0.5s, height 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover span {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Buttons with hover effect -->
+    <a href="#" class="btn"><span></span>button</a>
+    <a href="#" class="btn"><span></span>button</a>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript code
+        $(document).ready(function(e) {
+            $('.btn').on('mouseenter', function(e) {
+                x = e.pageX - $(this).offset().left;
+                y = e.pageY - $(this).offset().top;
+                $(this).find('span').css({
+                    top: y,
+                    left: x
+                });
+            });
+            $('.btn').on('mouseout', function(e) {
+                x = e.pageX - $(this).offset().left;
+                y = e.pageY - $(this).offset().top;
+                $(this).find('span').css({
+                    top: y,
+                    left: x
+                });
+            });
+        });
+    </script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
